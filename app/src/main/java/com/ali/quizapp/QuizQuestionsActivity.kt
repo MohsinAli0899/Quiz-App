@@ -6,10 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 
 class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
@@ -59,7 +56,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setQuestion() {
-
+        defaultOptionsView()
         val question: Question = mQuestionsList!![mCurrentPosition - 1]
         ivImage?.setImageResource(question.image)
         progressBar?.progress = mCurrentPosition
@@ -135,6 +132,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                             mCurrentPosition <= mQuestionsList!!.size ->{
                                 setQuestion()
                             }
+                            else ->{
+                                Toast.makeText(this, "Quiz Finished", Toast.LENGTH_SHORT ).show()
+                            }
 
                         }
                     }else{
@@ -143,6 +143,13 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                             answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
                         }
                         answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                        if(mCurrentPosition == mQuestionsList!!.size){
+                            btnSubmit?.text = "FINISH"
+                        }else{
+                            btnSubmit?.text = "GO TO NEXT QUESTION"
+                        }
+                        mSelectedOptionPosition = 0
                     }
             }
         }
