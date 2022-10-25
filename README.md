@@ -5,7 +5,7 @@ Tech Stack Used:
 1. Kotlin
 2. Android Studio
 3. XML
-4. Different UI Elements(TextViews, Buttons, Drawable Resources etc).
+4. Different UI Elements(TextViews, Buttons, Drawable Resources, Progress bar etc).
 5. Layouts(Linear, ScrollView, CardView etc).
 
 ## ScreenShots of the App
